@@ -1,32 +1,26 @@
-<svg width="100000000000" height="100000000000" viewBox="0 0 75 75" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="75" height="75" viewBox="0 0 75 75" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <filter id="aberration" x="-500%" y="-500%" width="1100%" height="1100%">
+      <animate attributeName="x" dur="0.3s" values="-500%;-550%;-450%;-520%;-480%;-510%;-490%;-530%;-470%;-500%" repeatCount="indefinite" />
+      <animate attributeName="y" dur="0.25s" values="-500%;-530%;-470%;-510%;-490%;-540%;-460%;-520%;-480%;-500%" repeatCount="indefinite" />
+      <animate attributeName="width" dur="0.35s" values="1100%;1150%;1050%;1120%;1080%;1130%;1070%;1140%;1060%;1100%" repeatCount="indefinite" />
+      <animate attributeName="height" dur="0.28s" values="1100%;1140%;1060%;1130%;1070%;1120%;1080%;1110%;1090%;1100%" repeatCount="indefinite" />
+      
       <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="15" seed="5" result="turb">
-        <animate attributeName="baseFrequency" dur="0.1s" values="0.9;0.95;0.85;0.92;0.88;0.9" repeatCount="indefinite" />
+        <animate attributeName="baseFrequency" dur="0.08s" values="0.9;0.95;0.85;0.92;0.88;0.93;0.87;0.94;0.86;0.91;0.89;0.9" repeatCount="indefinite" />
+        <animate attributeName="numOctaves" dur="0.5s" values="15;16;14;17;13;16;14;15" repeatCount="indefinite" />
       </feTurbulence>
       
       <feDisplacementMap in="SourceGraphic" in2="turb" scale="150" xChannelSelector="R" yChannelSelector="G" result="disp1">
-        <animate attributeName="scale" dur="0.05s" values="150;200;100;180;120;150" repeatCount="indefinite" />
+        <animate attributeName="scale" dur="0.05s" values="150;200;100;180;120;190;110;170;130;200;90;160;140;180;110;150" repeatCount="indefinite" />
       </feDisplacementMap>
       
       <feDisplacementMap in="disp1" in2="turb" scale="150" xChannelSelector="G" yChannelSelector="B" result="disp2">
-        <animate attributeName="scale" dur="0.07s" values="150;190;110;170;130;150" repeatCount="indefinite" />
+        <animate attributeName="scale" dur="0.07s" values="150;190;110;170;130;200;100;180;120;195;105;175;125;185;115;150" repeatCount="indefinite" />
       </feDisplacementMap>
       
       <feDisplacementMap in="disp2" in2="turb" scale="150" xChannelSelector="B" yChannelSelector="R" result="disp3">
-        <animate attributeName="scale" dur="0.06s" values="150;180;120;190;110;150" repeatCount="indefinite" />
-      </feDisplacementMap>
-      
-      <feDisplacementMap in="disp3" in2="turb" scale="150" xChannelSelector="R" yChannelSelector="B" result="disp4">
-        <animate attributeName="scale" dur="0.08s" values="150;210;90;160;140;150" repeatCount="indefinite" />
-      </feDisplacementMap>
-      
-      <feDisplacementMap in="disp4" in2="turb" scale="150" xChannelSelector="G" yChannelSelector="R" result="disp5">
-        <animate attributeName="scale" dur="0.04s" values="150;220;80;170;130;150" repeatCount="indefinite" />
-      </feDisplacementMap>
-      
-      <feDisplacementMap in="disp5" in2="turb" scale="150" xChannelSelector="B" yChannelSelector="G" result="disp6">
-        <animate attributeName="scale" dur="0.09s" values="150;200;100;190;110;150" repeatCount="indefinite" />
+        <animate attributeName="scale" dur="0.06s" values="150;180;120;190;110;210;90;170;130;200;100;185;115;175;125;150" repeatCount="indefinite" />
       </feDisplacementMap>
     </filter>
   </defs>
