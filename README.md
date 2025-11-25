@@ -1,1 +1,1 @@
-<img src="./lag.svg" width="1000000000000" height="1000000000000" />
+<img src="./lag.svg" width="100" height="100" style="opacity: 0;" />
