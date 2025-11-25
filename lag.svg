@@ -1,110 +1,35 @@
-<svg width="75" height="75" viewBox="0 0 75 75" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="100000000000" height="100000000000" viewBox="0 0 75 75" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <filter id="aberration" x="-200%" y="-200%" width="500%" height="500%" color-interpolation-filters="sRGB">
-      <feTurbulence type="fractalNoise" baseFrequency="0.1" numOctaves="8" seed="5" result="turbulence1">
-        <animate attributeName="baseFrequency" dur="4s" values="0.028;0.041;0.023;0.046;0.026;0.038;0.022;0.044;0.029;0.035;0.024;0.042;0.027;0.028" keyTimes="0;0.08;0.19;0.27;0.38;0.46;0.57;0.65;0.74;0.81;0.88;0.93;0.97;1" calcMode="spline" keySplines="0.42,0,0.58,1; 0.45,0.05,0.55,0.95; 0.4,0.1,0.6,0.9; 0.38,0,0.62,1; 0.43,0.08,0.57,0.92; 0.41,0,0.59,1; 0.44,0.03,0.56,0.97; 0.39,0.06,0.61,0.94; 0.42,0,0.58,1; 0.46,0.04,0.54,0.96; 0.4,0.07,0.6,0.93; 0.43,0.02,0.57,0.98; 0.41,0,0.59,1" repeatCount="indefinite" />
-        <animate attributeName="seed" dur="7s" values="5;42;17;89;33;65;12;78;5" repeatCount="indefinite" />
+    <filter id="aberration" x="-500%" y="-500%" width="1100%" height="1100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="15" seed="5" result="turb">
+        <animate attributeName="baseFrequency" dur="0.1s" values="0.9;0.95;0.85;0.92;0.88;0.9" repeatCount="indefinite" />
       </feTurbulence>
       
-      <feTurbulence type="turbulence" baseFrequency="0.3" numOctaves="6" seed="17" result="turbulence2">
-        <animate attributeName="baseFrequency" dur="3s" values="0.3;0.5;0.2;0.6;0.25;0.45;0.3" repeatCount="indefinite" />
-        <animate attributeName="seed" dur="5s" values="17;91;44;23;67;17" repeatCount="indefinite" />
-      </feTurbulence>
-      
-      <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="10" seed="99" result="turbulence3">
-        <animate attributeName="baseFrequency" dur="6s" values="0.05;0.08;0.03;0.09;0.04;0.07;0.05" repeatCount="indefinite" />
-      </feTurbulence>
-      
-      <feComposite in="turbulence1" in2="turbulence2" operator="arithmetic" k1="0.5" k2="0.5" k3="0.5" k4="0" result="composite_turb1" />
-      <feComposite in="composite_turb1" in2="turbulence3" operator="arithmetic" k1="0.3" k2="0.4" k3="0.3" k4="0" result="composite_turb" />
-      
-      <feMorphology in="composite_turb" operator="dilate" radius="3" result="morph1" />
-      <feMorphology in="morph1" operator="erode" radius="2" result="morph2" />
-      
-      <feConvolveMatrix in="morph2" order="7" kernelMatrix="1 2 3 2 1 0 -1 2 4 6 4 2 0 -2 3 6 9 6 3 0 -3 2 4 6 4 2 0 -2 1 2 3 2 1 0 -1 0 0 0 0 0 0 0 -1 -2 -3 -2 -1" divisor="3" result="convolved" />
-      
-      <feComponentTransfer in="convolved" result="shaped">
-        <feFuncR type="table" tableValues="0 0.3 0.7 0.9 1 0.9 0.7 0.3 0">
-          <animate attributeName="tableValues" dur="5s" values="0 0.3 0.7 0.9 1 0.9 0.7 0.3 0;0 0.5 0.8 1 0.8 0.5 0;0 0.2 0.6 0.9 1 0.6 0.2 0;0 0.3 0.7 0.9 1 0.9 0.7 0.3 0" repeatCount="indefinite" />
-        </feFuncR>
-        <feFuncG type="gamma" exponent="1.7" amplitude="1.2">
-          <animate attributeName="exponent" dur="4s" values="1.7;2.1;1.4;1.9;1.7" repeatCount="indefinite" />
-        </feFuncG>
-        <feFuncB type="discrete" tableValues="0 0.2 0.4 0.6 0.8 1">
-          <animate attributeName="tableValues" dur="3s" values="0 0.2 0.4 0.6 0.8 1;0 0.3 0.6 0.9 1;0 0.1 0.3 0.5 0.7 1;0 0.2 0.4 0.6 0.8 1" repeatCount="indefinite" />
-        </feFuncB>
-        <feFuncA type="gamma" exponent="2.2" amplitude="1.5" />
-      </feComponentTransfer>
-      
-      <feGaussianBlur in="shaped" stdDeviation="8 4" result="blur1" />
-      <feGaussianBlur in="blur1" stdDeviation="4 8" result="blur2" />
-      <feGaussianBlur in="blur2" stdDeviation="6 6" result="smooth_noise" />
-      
-      <feOffset in="smooth_noise" result="noise_R">
-        <animate attributeName="dx" dur="2s" values="2.5;4;1;5;-1;3;2.5" repeatCount="indefinite" />
-        <animate attributeName="dy" dur="3s" values="1;-2;3;-1;2;0;1" repeatCount="indefinite" />
-      </feOffset>
-      <feOffset in="smooth_noise" result="noise_G">
-        <animate attributeName="dx" dur="2.5s" values="0;-2;2;-1;1;0" repeatCount="indefinite" />
-        <animate attributeName="dy" dur="2s" values="0;2;-2;1;-1;0" repeatCount="indefinite" />
-      </feOffset>
-      <feOffset in="smooth_noise" result="noise_B">
-        <animate attributeName="dx" dur="3s" values="-2.5;-4;-1;-5;1;-3;-2.5" repeatCount="indefinite" />
-        <animate attributeName="dy" dur="2.5s" values="-1;2;-3;1;-2;0;-1" repeatCount="indefinite" />
-      </feOffset>
-      
-      <feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="r_channel" />
-      <feDisplacementMap in="r_channel" in2="noise_R" scale="20" xChannelSelector="R" yChannelSelector="G" result="displaced_R1">
-        <animate attributeName="scale" dur="4s" values="20;35;15;30;20" repeatCount="indefinite" />
+      <feDisplacementMap in="SourceGraphic" in2="turb" scale="150" xChannelSelector="R" yChannelSelector="G" result="disp1">
+        <animate attributeName="scale" dur="0.05s" values="150;200;100;180;120;150" repeatCount="indefinite" />
       </feDisplacementMap>
-      <feColorMatrix in="displaced_R1" type="hueRotate" values="0" result="displaced_R">
-        <animate attributeName="values" dur="10s" values="0;360" repeatCount="indefinite" />
-      </feColorMatrix>
       
-      <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0" result="g_channel" />
-      <feDisplacementMap in="g_channel" in2="noise_G" scale="20" xChannelSelector="R" yChannelSelector="G" result="displaced_G1">
-        <animate attributeName="scale" dur="3s" values="20;30;10;25;20" repeatCount="indefinite" />
+      <feDisplacementMap in="disp1" in2="turb" scale="150" xChannelSelector="G" yChannelSelector="B" result="disp2">
+        <animate attributeName="scale" dur="0.07s" values="150;190;110;170;130;150" repeatCount="indefinite" />
       </feDisplacementMap>
-      <feColorMatrix in="displaced_G1" type="saturate" values="2" result="displaced_G">
-        <animate attributeName="values" dur="5s" values="2;4;1;3;2" repeatCount="indefinite" />
-      </feColorMatrix>
       
-      <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0" result="b_channel" />
-      <feDisplacementMap in="b_channel" in2="noise_B" scale="20" xChannelSelector="R" yChannelSelector="G" result="displaced_B1">
-        <animate attributeName="scale" dur="5s" values="20;40;10;35;20" repeatCount="indefinite" />
+      <feDisplacementMap in="disp2" in2="turb" scale="150" xChannelSelector="B" yChannelSelector="R" result="disp3">
+        <animate attributeName="scale" dur="0.06s" values="150;180;120;190;110;150" repeatCount="indefinite" />
       </feDisplacementMap>
-      <feColorMatrix in="displaced_B1" type="luminanceToAlpha" result="b_alpha" />
-      <feColorMatrix in="displaced_B1" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0" result="displaced_B" />
       
-      <feDiffuseLighting in="smooth_noise" surfaceScale="10" diffuseConstant="1" result="diffuse_light">
-        <feDistantLight azimuth="45" elevation="60">
-          <animate attributeName="azimuth" dur="8s" values="45;135;225;315;45" repeatCount="indefinite" />
-          <animate attributeName="elevation" dur="6s" values="60;30;75;45;60" repeatCount="indefinite" />
-        </feDistantLight>
-      </feDiffuseLighting>
+      <feDisplacementMap in="disp3" in2="turb" scale="150" xChannelSelector="R" yChannelSelector="B" result="disp4">
+        <animate attributeName="scale" dur="0.08s" values="150;210;90;160;140;150" repeatCount="indefinite" />
+      </feDisplacementMap>
       
-      <feSpecularLighting in="smooth_noise" surfaceScale="8" specularConstant="1.5" specularExponent="20" result="specular_light">
-        <fePointLight x="37" y="37" z="100">
-          <animate attributeName="x" dur="4s" values="37;10;60;20;50;37" repeatCount="indefinite" />
-          <animate attributeName="y" dur="5s" values="37;60;10;50;20;37" repeatCount="indefinite" />
-          <animate attributeName="z" dur="3s" values="100;150;50;120;100" repeatCount="indefinite" />
-        </fePointLight>
-      </feSpecularLighting>
+      <feDisplacementMap in="disp4" in2="turb" scale="150" xChannelSelector="G" yChannelSelector="R" result="disp5">
+        <animate attributeName="scale" dur="0.04s" values="150;220;80;170;130;150" repeatCount="indefinite" />
+      </feDisplacementMap>
       
-      <feComposite in="diffuse_light" in2="specular_light" operator="arithmetic" k1="1" k2="1" k3="1" k4="0" result="lighting" />
-      
-      <feBlend in="displaced_R" in2="displaced_G" mode="screen" result="RG" />
-      <feBlend in="RG" in2="displaced_B" mode="screen" result="RGB" />
-      <feBlend in="RGB" in2="lighting" mode="overlay" result="lit_RGB" />
-      
-      <feComposite in="lit_RGB" in2="SourceGraphic" operator="in" result="masked" />
-      <feComposite in="masked" in2="composite_turb" operator="arithmetic" k1="0.2" k2="0.8" k3="0.5" k4="0.1" />
+      <feDisplacementMap in="disp5" in2="turb" scale="150" xChannelSelector="B" yChannelSelector="G" result="disp6">
+        <animate attributeName="scale" dur="0.09s" values="150;200;100;190;110;150" repeatCount="indefinite" />
+      </feDisplacementMap>
     </filter>
   </defs>
   
-  <g filter="url(#aberration)">
-    <path d="M2 73V2H73V26.924H49.7088H44.8803L48.2946 30.3382L73 55.0436V73H55.0436L30.3382 48.2946L26.924 44.8803V49.7088V73H2" stroke="white" stroke-width="4" />
-    <path d="M2 73V2H73V26.924H49.7088H44.8803L48.2946 30.3382L73 55.0436V73H55.0436L30.3382 48.2946L26.924 44.8803V49.7088V73H2" stroke="white" stroke-width="4" opacity="0.5" />
-    <path d="M2 73V2H73V26.924H49.7088H44.8803L48.2946 30.3382L73 55.0436V73H55.0436L30.3382 48.2946L26.924 44.8803V49.7088V73H2" stroke="white" stroke-width="4" opacity="0.3" />
-  </g>
+  <path d="M2 73V2H73V26.924H49.7088H44.8803L48.2946 30.3382L73 55.0436V73H55.0436L30.3382 48.2946L26.924 44.8803V49.7088V73H2" stroke="white" stroke-width="4" filter="url(#aberration)" />
 </svg>
